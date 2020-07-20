@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+
+  samba:
+    image: docker.pkg.github.com/magicloud/images/samba:e6625a8
+    command: /upload
+    ports:
+      - "445:445"
+      - "139:139"
+    volumes:
+      - "/mnt/data/conf/samba/smb.conf:/etc/samba/smb.conf"
+      - "backup:/backup:ro"
+      - "downloads:/downloads:ro"
+      - "upload:/upload"
+
+volumes:
+  backup:
+    external: true
+  downloads:
+    external: true
+  upload:
+    external: true
