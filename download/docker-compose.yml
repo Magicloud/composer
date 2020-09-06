@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+
+  aria2:
+    image: docker.pkg.github.com/magicloud/images/aria2:f87b3eb
+    networks:
+      - download
+    volumes:
+      - "downloads:/downloads:rw"
+
+  ariang:
+    image: docker.pkg.github.com/magicloud/images/ariang:f87b3eb
+    networks:
+      - download
+
+  ariang.init:
+    depends_on:
+      - ariang
+    image: docker.pkg.github.com/magicloud/images/ariang.init:f87b3eb
+    networks:
+      - download
+
+networks:
+  download:
+
+volumes:
+  downloads:
+    external: true
