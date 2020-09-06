@@ -3,8 +3,6 @@ services:
 
   v2ray:
     image: docker.pkg.github.com/magicloud/images/v2ray:eba8d0a
-    ports:
-      - "2080"
     networks:
       - proxy
     volumes:
@@ -12,8 +10,6 @@ services:
 
   polipo:
     image: docker.pkg.github.com/magicloud/images/polipo:eba8d0a
-    ports:
-      - "8123"
     networks:
       - proxy
     volumes:
