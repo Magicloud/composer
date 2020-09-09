@@ -8,15 +8,17 @@ services:
     volumes:
       - "downloads:/downloads:rw"
 
-  ariang:
-    image: docker.pkg.github.com/magicloud/images/ariang:f87b3eb
+  aria2.proxy:
+    image: docker.pkg.github.com/magicloud/images/reverse-proxy:b739144
+    command: 6800 http://aria2:6800 'Access-Control-Allow-Origin:*'
     networks:
       - download
 
-  ariang.init:
+  ariang:
     depends_on:
-      - ariang
-    image: docker.pkg.github.com/magicloud/images/ariang.init:f87b3eb
+      - aria2
+    image: docker.pkg.github.com/magicloud/images/ariang:1234ae0
+    command: http/aria2/6800/jsonrpc
     networks:
       - download
 

@@ -10,6 +10,8 @@ services:
 
   polipo:
     image: docker.pkg.github.com/magicloud/images/polipo:eba8d0a
+    ports:
+      - "8080:8123"
     networks:
       - proxy
     volumes:
