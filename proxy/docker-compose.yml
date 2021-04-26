@@ -2,20 +2,19 @@ version: "3.8"
 services:
 
   v2ray:
-    image: docker.pkg.github.com/magicloud/images/v2ray:eba8d0a
+    image: docker.pkg.github.com/magicloud/images/v2ray:3d1afad
     networks:
       - proxy
     volumes:
       - "/mnt/data/conf/v2ray/config.json:/v2ray/config.json"
 
-  polipo:
-    image: docker.pkg.github.com/magicloud/images/polipo:eba8d0a
+  socks2http:
+    image: docker.pkg.github.com/magicloud/images/socks2http:3d1afad
+    command: v2ray 2080 socks5
     ports:
       - "8080:8123"
     networks:
       - proxy
-    volumes:
-      - "/mnt/data/conf/polipo/config:/etc/polipo/config"
 
 networks:
   proxy:

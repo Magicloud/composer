@@ -9,7 +9,7 @@ services:
       - "downloads:/downloads:rw"
 
   aria2.proxy:
-    image: docker.pkg.github.com/magicloud/images/reverse-proxy:b739144
+    image: docker.pkg.github.com/magicloud/images/reverse-proxy:f963a97
     command: 6800 http://aria2:6800 'Access-Control-Allow-Origin:*'
     networks:
       - download

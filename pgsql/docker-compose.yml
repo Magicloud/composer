@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+
+  postgresql:
+    image: postgres
+    networks:
+      - db
+    ports:
+      - "5432:5432"
+    volumes:
+      - "/mnt/data/db:/var/lib/postgresql/data/"
+    environment:
+      - POSTGRES_PASSWORD=Magy(364
+
+  graphql:
+    image: docker.pkg.github.com/magicloud/images/graphql:7197a91
+    networks:
+      - db
+    ports:
+      - "5000:5000"
+    environment:
+      - CONN_STR=postgres://postgres:Magy(364@postgresql/testdb
+      - NS=test_schema
+
+  pgadmin:
+    image: dpage/pgadmin4
+    networks:
+      - db
+    ports:
+      - "5080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=magiclouds@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=Magy(364
+
+networks:
+  db:
